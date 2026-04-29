@@ -1,0 +1,62 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const pdfPath = "/WISDOM_Stage.pdf";
+---
+
+<Layout
+  title="CV — Wisdom MUONAKA"
+  description="Curriculum vitae de Wisdom MUONAKA, ingénieur DevOps"
+>
+  <div class="cv-wrapper">
+
+    <!-- Toolbar -->
+    <div class="cv-toolbar">
+      <span class="mono text-gray-400 text-sm">Wisdom MUONAKA — CV</span>
+      <a
+        href={pdfPath}
+        download="CV-Wisdom-MUONAKA.pdf"
+        class="btn btn-primary"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+        </svg>
+        Télécharger
+      </a>
+    </div>
+
+    <!-- PDF viewer -->
+    <iframe
+      src={pdfPath}
+      class="cv-frame"
+      title="CV Wisdom MUONAKA"
+    ></iframe>
+
+  </div>
+</Layout>
+
+<style>
+  .cv-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 4rem);
+  }
+
+  .cv-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1.5rem;
+    background: #111827;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    flex-shrink: 0;
+  }
+
+  .cv-frame {
+    flex: 1;
+    width: 100%;
+    border: none;
+    background: #1a1a2e;
+  }
+</style>
