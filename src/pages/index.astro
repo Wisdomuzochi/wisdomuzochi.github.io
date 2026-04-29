@@ -150,7 +150,9 @@ const li = "https://www.linkedin.com/in/wisdom-muonaka-45781b321";
         À la recherche d'un stage<br />ou d'une alternance DevOps
       </h2>
       <p class="text-gray-400 text-sm mb-8 leading-relaxed">
-        Étudiant ingénieur à l'ISTY Paris-Saclay (Bac+4), je me spécialise dans le DevOps, le Cloud et l'ingénierie systèmes. Je construis des systèmes fiables, scalables et observables — avec une approche SRE : automatiser, mesurer et améliorer en continu.
+        Étudiant ingénieur à l'ISTY Paris-Saclay (Bac+4), je me spécialise dans le DevOps, le Cloud et l'ingénierie systèmes.
+        Je construis des systèmes fiables, scalables et observables — avec une approche orientée SRE : automatiser, mesurer et améliorer en continu.
+        J'ai un attrait particulier pour l'optimisation et l'architecture des infrastructures modernes.
       </p>
       <a href="/contact" class="btn btn-primary">Me contacter →</a>
     </div>
@@ -188,7 +190,7 @@ const li = "https://www.linkedin.com/in/wisdom-muonaka-45781b321";
   }
   .section-link:hover { color: #38bdf8; }
 
-  /* ── Projects — flex-row sur desktop, colonne sur mobile ── */
+  /* ── Projects — colonne sur mobile, ligne sur desktop ── */
   .projects-row {
     display: flex;
     flex-direction: column;
@@ -198,24 +200,21 @@ const li = "https://www.linkedin.com/in/wisdom-muonaka-45781b321";
   @media (min-width: 768px) {
     .projects-row {
       flex-direction: row;
-      align-items: stretch;
-    }
-    .projects-row .proj-card {
-      flex: 1;
-      min-width: 0;
+      align-items: stretch; /* toutes les cards à la même hauteur */
     }
   }
 
-  /* ── Project cards — equal height via flex ── */
+  /* ── Project cards ── */
   .proj-card {
     display: flex;
     flex-direction: column;
+    flex: 1;          /* largeur égale entre les 3 cards */
+    min-width: 0;     /* empêche le débordement */
     background: #111827;
     border: 1px solid rgba(255,255,255,0.06);
     border-radius: 0.875rem;
     padding: 1.25rem;
     transition: border-color 0.2s, transform 0.2s;
-    height: 100%;
   }
   .proj-card:hover {
     border-color: rgba(56,189,248,0.28);
