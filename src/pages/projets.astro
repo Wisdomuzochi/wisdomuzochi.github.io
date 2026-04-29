@@ -1,0 +1,160 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const projects = [
+  {
+    title: "DataPulse",
+    subtitle: "Pipeline ETL, NLP & Infrastructure Cloud",
+    href: "https://github.com/Wisdomuzochi/datapulse",
+    paragraphs: [
+      "Plateforme ETL de bout en bout : ingestion de textes bruts via une API FastAPI, analyse de sentiment multilingue (BERT HuggingFace) traitée de façon asynchrone par un worker Celery via Redis.",
+      "Les résultats sont stockés dans PostgreSQL avec une machine à états (pending → processing → completed). L'infrastructure AWS complète (VPC, EC2, RDS, S3, IAM) est provisionnée en une commande via Terraform (19 ressources).",
+      "Pipeline CI/CD GitHub Actions avec scan sécurité Trivy et monitoring Prometheus/Grafana.",
+    ],
+    stack: ["FastAPI", "Celery", "Redis", "PostgreSQL", "Docker", "Terraform", "AWS", "Prometheus", "Grafana", "GitHub Actions"],
+  },
+  {
+    title: "react-devops-aws",
+    subtitle: "Déploiement Serverless React",
+    href: "https://github.com/Wisdomuzochi/react-devops-aws",
+    paragraphs: [
+      "Application React buildée et déployée automatiquement sur AWS S3 en mode static website hosting, distribuée mondialement via CloudFront CDN avec HTTPS et cache-control optimisé.",
+      "Le pipeline GitHub Actions déclenche le build, synchronise S3 et invalide le cache CloudFront à chaque push sur main — zéro intervention manuelle.",
+    ],
+    stack: ["React", "AWS S3", "CloudFront", "GitHub Actions"],
+  },
+  {
+    title: "fastapi-devops-aws",
+    subtitle: "API REST & Pipeline CI/CD",
+    href: "https://github.com/Wisdomuzochi/fastapi-devops-aws",
+    paragraphs: [
+      "API REST FastAPI conteneurisée avec Docker (optimisation multi-layer et cache des layers). Livrée automatiquement sur AWS ECR via GitHub Actions à chaque push.",
+      "Health check endpoint /health pour les orchestrateurs. IAM least-privilege et traçabilité complète image↔commit via SHA Git.",
+    ],
+    stack: ["FastAPI", "Docker", "AWS ECR", "GitHub Actions", "IAM"],
+  },
+];
+---
+
+<Layout
+  title="Projets — Wisdom MUONAKA"
+  description="Projets DevOps de Wisdom MUONAKA : DataPulse, react-devops-aws, fastapi-devops-aws"
+>
+  <div class="max-w-5xl mx-auto px-6 py-20">
+
+    <!-- Page header -->
+    <div class="mb-12">
+      <p class="label mb-3">Réalisations</p>
+      <h1 class="text-4xl font-bold text-white">Projets DevOps</h1>
+    </div>
+
+    <!-- Grid — 3 equal cards -->
+    <div class="projects-grid">
+      {projects.map(p => (
+        <div class="proj-card">
+
+          <!-- Title & subtitle -->
+          <div class="proj-header">
+            <h3 class="mono font-bold text-white text-[15px]">{p.title}</h3>
+            <p class="text-sky-400 text-xs mt-1">{p.subtitle}</p>
+          </div>
+
+          <!-- Description (flex-1 ensures equal bottom alignment) -->
+          <div class="proj-body">
+            {p.paragraphs.map(para => (
+              <p class="text-gray-400 text-sm leading-relaxed">{para}</p>
+            ))}
+          </div>
+
+          <!-- Stack -->
+          <div class="proj-stack">
+            <p class="mono text-gray-600 text-[10px] uppercase tracking-widest mb-2">Stack</p>
+            <div class="flex flex-wrap gap-1.5">
+              {p.stack.map(t => <span class="tech-tag">{t}</span>)}
+            </div>
+          </div>
+
+          <!-- GitHub link — always at bottom -->
+          <div class="proj-footer">
+            <a href={p.href} target="_blank" rel="noopener noreferrer" class="gh-link">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+              Voir sur GitHub →
+            </a>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+  </div>
+</Layout>
+
+<style>
+  /* ── Grid : 3 colonnes égales, hauteur identique par ligne ── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+
+  @media (min-width: 768px) {
+    .projects-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* ── Card — flex-col so content + footer stick to bottom ── */
+  .proj-card {
+    display: flex;
+    flex-direction: column;
+    background: #111827;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 0.875rem;
+    padding: 1.5rem;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .proj-card:hover {
+    border-color: rgba(56, 189, 248, 0.3);
+    transform: translateY(-3px);
+  }
+
+  .proj-header {
+    margin-bottom: 1rem;
+  }
+
+  /* flex-1 makes all descriptions fill equal space */
+  .proj-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .proj-stack {
+    margin-bottom: 1.25rem;
+  }
+
+  .proj-footer {
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    margin-top: auto;
+  }
+
+  .gh-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: #6b7280;
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .gh-link:hover { color: #38bdf8; }
+</style>

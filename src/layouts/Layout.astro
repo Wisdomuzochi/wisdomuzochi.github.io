@@ -1,0 +1,228 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Wisdom MUONAKA — Ingénieur DevOps",
+  description = "Portfolio DevOps de Wisdom MUONAKA — ISTY Paris-Saclay",
+} = Astro.props;
+
+const pathname = Astro.url.pathname;
+
+const nav = [
+  { href: "/",         label: "Accueil"  },
+  { href: "/a-propos", label: "À propos" },
+  { href: "/projets",  label: "Projets"  },
+  { href: "/contact",  label: "Contact"  },
+];
+
+const isActive = (href: string) =>
+  href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(href + "/");
+---
+
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="bg-[#0f1117] text-white min-h-screen antialiased">
+
+    <!-- ── NAV ── -->
+    <header class="fixed top-0 w-full z-50 bg-[#0f1117]/90 backdrop-blur-md border-b border-white/5">
+      <nav class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+        <a href="/" class="font-black text-xl tracking-tight gradient-text">WM.</a>
+
+        <!-- Desktop -->
+        <div class="hidden md:flex items-center gap-1">
+          {nav.map(link => (
+            <a
+              href={link.href}
+              class={`px-4 py-2 rounded-lg text-sm transition-all duration-150 ${
+                isActive(link.href)
+                  ? "text-white bg-white/10 font-medium"
+                  : "text-gray-400 hover:text-white hover:bg-white/5"
+              }`}
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+
+        <!-- Mobile toggle -->
+        <button id="menu-btn" class="md:hidden p-2 text-gray-400 hover:text-white" aria-label="Menu">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </nav>
+
+      <!-- Mobile dropdown -->
+      <div id="mobile-menu" class="hidden md:hidden border-t border-white/5">
+        <div class="max-w-5xl mx-auto px-6 py-3 flex flex-col gap-1">
+          {nav.map(link => (
+            <a
+              href={link.href}
+              class={`px-4 py-3 rounded-lg text-sm ${
+                isActive(link.href)
+                  ? "text-white bg-white/10 font-medium"
+                  : "text-gray-400 hover:text-white hover:bg-white/5"
+              }`}
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </header>
+
+    <!-- ── CONTENT ── -->
+    <main class="pt-16 min-h-screen">
+      <slot />
+    </main>
+
+    <!-- ── FOOTER ── -->
+    <footer class="border-t border-white/5 py-8 px-6 text-center">
+      <p class="text-gray-600 text-sm mono">© 2025 Wisdom MUONAKA</p>
+    </footer>
+
+    <script>
+      document.getElementById("menu-btn")?.addEventListener("click", () => {
+        document.getElementById("mobile-menu")?.classList.toggle("hidden");
+      });
+    </script>
+
+  </body>
+</html>
+
+<style is:global>
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body { font-family: "Inter", sans-serif; }
+
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: #0f1117; }
+  ::-webkit-scrollbar-thumb { background: #1e2535; border-radius: 3px; }
+
+  /* ── Utility ── */
+  .mono { font-family: "JetBrains Mono", monospace; }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #38bdf8, #818cf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #38bdf8;
+  }
+
+  /* ── Animations ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50%       { background-position: 100% 50%; }
+  }
+
+  .fade-up { animation: fadeUp 0.6s ease-out forwards; }
+  .d1 { animation-delay: 0.1s; opacity: 0; }
+  .d2 { animation-delay: 0.2s; opacity: 0; }
+  .d3 { animation-delay: 0.35s; opacity: 0; }
+  .d4 { animation-delay: 0.5s; opacity: 0; }
+
+  .gradient-shift {
+    background: linear-gradient(135deg, #38bdf8, #818cf8, #38bdf8);
+    background-size: 200% 200%;
+    animation: gradientShift 5s ease infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── Shared cards ── */
+  .card {
+    background: #111827;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 0.875rem;
+    padding: 1.5rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .card:hover { transform: translateY(-2px); }
+  .card-blue:hover  { border-color: rgba(56,189,248,0.3); }
+  .card-indigo:hover { border-color: rgba(129,140,248,0.3); }
+
+  /* ── Tags ── */
+  .tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.07);
+    color: #9ca3af;
+  }
+
+  .tech-tag {
+    display: inline-block;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.68rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: 0.3rem;
+    background: rgba(56,189,248,0.08);
+    border: 1px solid rgba(56,189,248,0.18);
+    color: #7dd3fc;
+  }
+
+  /* ── Buttons ── */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    border-radius: 0.625rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.15s;
+    text-decoration: none;
+  }
+  .btn-primary {
+    background: #38bdf8;
+    color: #0f1117;
+    font-weight: 600;
+  }
+  .btn-primary:hover { background: #7dd3fc; }
+  .btn-secondary {
+    background: rgba(255,255,255,0.05);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,0.10); border-color: rgba(255,255,255,0.2); }
+  .btn-ghost {
+    color: #818cf8;
+    border: 1px solid rgba(129,140,248,0.3);
+  }
+  .btn-ghost:hover { background: rgba(129,140,248,0.08); }
+</style>
