@@ -86,10 +86,84 @@ const li = "https://www.linkedin.com/in/wisdom-muonaka-45781b321";
     </div>
   </section>
 
+  <!-- ── COMPÉTENCES ── -->
+  <section class="py-20 px-6 bg-[#0d1220]">
+    <div class="max-w-5xl mx-auto">
+
+      <!-- Compétences techniques -->
+      <h2 class="label mb-8">Compétences techniques</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+        {[
+          { icon: "⚡", title: "Langages",
+            items: ["C", "C++", "Java", "Python", "JavaScript/TypeScript", "Shell/Bash"] },
+          { icon: "🌐", title: "Dev Web & Backend",
+            items: ["React", "Node.js", "FastAPI", "REST APIs"] },
+          { icon: "☁️", title: "Cloud & AWS",
+            items: ["EC2", "S3", "RDS", "ECR", "CloudFront", "VPC", "IAM"] },
+          { icon: "🐳", title: "DevOps & CI/CD",
+            items: ["Docker", "Kubernetes", "Terraform", "GitHub Actions", "GitLab CI"] },
+          { icon: "📊", title: "Observabilité (SRE)",
+            items: ["Prometheus", "Grafana"] },
+          { icon: "🖥️", title: "Systèmes & OS",
+            items: ["Linux (Ubuntu)", "OpenMP", "MPI"] },
+        ].map(s => (
+          <div class="skill-card">
+            <div class="flex items-center gap-2.5 mb-3">
+              <span class="text-base">{s.icon}</span>
+              <span class="text-sm font-semibold text-white">{s.title}</span>
+            </div>
+            <div class="flex flex-wrap gap-1.5">
+              {s.items.map(item => <span class="tag">{item}</span>)}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Langues -->
+      <div class="skill-card mb-4 sm:max-w-xs">
+        <div class="flex items-center gap-2.5 mb-3">
+          <span class="text-base">🌍</span>
+          <span class="text-sm font-semibold text-white">Langues</span>
+        </div>
+        <div class="flex flex-wrap gap-1.5">
+          {["Français (natif)", "Anglais B2 — TOEIC"].map(item => (
+            <span class="tag">{item}</span>
+          ))}
+        </div>
+      </div>
+
+      <!-- Soft skills -->
+      <div class="skill-card sm:max-w-xs">
+        <div class="flex items-center gap-2.5 mb-3">
+          <span class="text-base">🤝</span>
+          <span class="text-sm font-semibold text-white">Soft skills</span>
+        </div>
+        <div class="flex flex-wrap gap-1.5">
+          {["Autonome", "Dynamique", "Curieux", "Esprit d'analyse"].map(item => (
+            <span class="tag">{item}</span>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </section>
 
 </Layout>
 
 <style>
+  /* ── Skill cards ── */
+  .skill-card {
+    background: #111827;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 0.875rem;
+    padding: 1.25rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .skill-card:hover {
+    border-color: rgba(56,189,248,0.28);
+    transform: translateY(-2px);
+  }
+
   /* ── Hero name — equal size, equal weight ── */
   .name-line {
     display: block;
