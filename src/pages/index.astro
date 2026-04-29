@@ -86,44 +86,6 @@ const li = "https://www.linkedin.com/in/wisdom-muonaka-45781b321";
     </div>
   </section>
 
-  <!-- ── COMPÉTENCES ── -->
-  <section class="py-20 px-6 bg-[#0d1220]">
-    <div class="max-w-5xl mx-auto">
-      <div class="section-header">
-        <h2 class="section-title">Compétences</h2>
-        <a href="/a-propos" class="section-link">Voir le parcours →</a>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {skills.map(s => (
-          <div class="card card-blue">
-            <div class="flex items-center gap-2.5 mb-3">
-              <span class="text-base">{s.icon}</span>
-              <span class="text-sm font-semibold text-white">{s.title}</span>
-            </div>
-            <div class="flex flex-wrap gap-1.5">
-              {s.items.map(item => <span class="tag">{item}</span>)}
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- ── CTA ── -->
-  <section class="py-20 px-6 bg-[#0d1220]">
-    <div class="max-w-xl mx-auto text-center">
-      <p class="label mb-4">Disponible maintenant</p>
-      <h2 class="text-2xl md:text-3xl font-bold text-white mb-4 leading-snug">
-        À la recherche d'un stage<br />ou d'une alternance DevOps
-      </h2>
-      <p class="text-gray-400 text-sm mb-8 leading-relaxed">
-        Étudiant ingénieur à l'ISTY Paris-Saclay (Bac+4), je me spécialise dans le DevOps, le Cloud et l'ingénierie systèmes.
-        Je construis des systèmes fiables, scalables et observables — avec une approche orientée SRE : automatiser, mesurer et améliorer en continu.
-        J'ai un attrait particulier pour l'optimisation et l'architecture des infrastructures modernes.
-      </p>
-      <a href="/contact" class="btn btn-primary">Me contacter →</a>
-    </div>
-  </section>
 
 </Layout>
 
