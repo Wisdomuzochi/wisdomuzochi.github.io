@@ -14,6 +14,16 @@ const projects = [
     stack: ["FastAPI", "Celery", "Redis", "PostgreSQL", "Docker", "Terraform", "AWS", "Prometheus", "Grafana", "GitHub Actions"],
   },
   {
+    title: "StatusHub",
+    subtitle: "Monitoring d'Uptime en Temps Réel",
+    href: "https://github.com/Wisdomuzochi/statushub",
+    paragraphs: [
+      "Plateforme de monitoring qui surveille automatiquement la disponibilité de services web toutes les 30 secondes. Un worker Celery ping chaque URL et stocke le résultat (UP/DOWN, latence en ms) dans PostgreSQL.",
+      "Dashboard React en temps réel avec graphiques de latence, pipeline CI/CD GitHub Actions avec tests pytest automatiques et build Docker.",
+    ],
+    stack: ["FastAPI", "Celery", "Redis", "PostgreSQL", "React", "Docker", "GitHub Actions", "pytest"],
+  },
+  {
     title: "react-devops-aws",
     subtitle: "Déploiement Serverless React",
     href: "https://github.com/Wisdomuzochi/react-devops-aws",
