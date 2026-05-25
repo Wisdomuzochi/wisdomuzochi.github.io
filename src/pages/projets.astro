@@ -3,6 +3,17 @@ import Layout from "../layouts/Layout.astro";
 
 const projects = [
   {
+    title: "CloudMart",
+    subtitle: "Plateforme E-commerce Microservices",
+    href: "https://github.com/Wisdomuzochi/cloudmart",
+    paragraphs: [
+      "Plateforme e-commerce complète en architecture microservices — 6 services Spring Boot Java indépendants avec un frontend Angular/TypeScript, orchestrés sur Kubernetes (k3d).",
+      "Pipeline Jenkins CI/CD complet avec 26 tests automatiques JUnit/Mockito. Communication inter-services via RabbitMQ (event-driven), routage via Spring Cloud Gateway et découverte de services via Eureka.",
+      "Monitoring en temps réel avec Prometheus/Grafana. Chaque service possède sa propre base de données (PostgreSQL ou MongoDB) — isolation complète des données.",
+    ],
+    stack: ["Java", "Spring Boot", "Angular", "TypeScript", "PostgreSQL", "MongoDB", "RabbitMQ", "Docker", "Kubernetes", "Jenkins", "Prometheus", "Grafana", "Spring Cloud Gateway", "Eureka"],
+  },
+  {
     title: "DataPulse",
     subtitle: "Pipeline ETL, NLP & Infrastructure Cloud",
     href: "https://github.com/Wisdomuzochi/datapulse",
