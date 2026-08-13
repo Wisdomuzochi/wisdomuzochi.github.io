@@ -3,6 +3,17 @@ import Layout from "../layouts/Layout.astro";
 
 const projects = [
   {
+    title: "MiniDoc",
+    subtitle: "Application de Gestion Électronique de Documents (GED)",
+    href: "https://github.com/Wisdomuzochi/minidoc",
+    paragraphs: [
+      "MiniDoc est une application de gestion électronique de documents permettant d'uploader, classer et suivre le cycle de vie de fichiers réels (Brouillon → Validé → Archivé). Conçue comme une GED fonctionnelle de bout en bout — du stockage physique des fichiers jusqu'à une interface web complète.",
+      "Upload de documents réels avec calcul automatique des métadonnées (nom, type MIME, taille), CRUD complet exposé via une API REST ASP.NET Core, et interface Angular avec confirmations et retours visuels soignés.",
+      "Pipeline CI/CD automatisé via GitHub Actions, documentation API via Swagger/OpenAPI, et tests unitaires xUnit côté backend.",
+    ],
+    stack: ["C#", ".NET 8", "ASP.NET Core Web API", "Entity Framework Core 8", "SQLite", "xUnit", "Angular", "TypeScript", "RxJS", "GitHub Actions", "Swagger/OpenAPI"],
+  },
+  {
     title: "CloudMart",
     subtitle: "Plateforme E-commerce Microservices",
     href: "https://github.com/Wisdomuzochi/cloudmart",
@@ -34,32 +45,12 @@ const projects = [
     ],
     stack: ["FastAPI", "Celery", "Redis", "PostgreSQL", "React", "Docker", "GitHub Actions", "pytest"],
   },
-  {
-    title: "react-devops-aws",
-    subtitle: "Déploiement Serverless React",
-    href: "https://github.com/Wisdomuzochi/react-devops-aws",
-    paragraphs: [
-      "Application React buildée et déployée automatiquement sur AWS S3 en mode static website hosting, distribuée mondialement via CloudFront CDN avec HTTPS et cache-control optimisé.",
-      "Le pipeline GitHub Actions déclenche le build, synchronise S3 et invalide le cache CloudFront à chaque push sur main — zéro intervention manuelle.",
-    ],
-    stack: ["React", "AWS S3", "CloudFront", "GitHub Actions"],
-  },
-  {
-    title: "fastapi-devops-aws",
-    subtitle: "API REST & Pipeline CI/CD",
-    href: "https://github.com/Wisdomuzochi/fastapi-devops-aws",
-    paragraphs: [
-      "API REST FastAPI conteneurisée avec Docker (optimisation multi-layer et cache des layers). Livrée automatiquement sur AWS ECR via GitHub Actions à chaque push.",
-      "Health check endpoint /health pour les orchestrateurs. IAM least-privilege et traçabilité complète image↔commit via SHA Git.",
-    ],
-    stack: ["FastAPI", "Docker", "AWS ECR", "GitHub Actions", "IAM"],
-  },
 ];
 ---
 
 <Layout
   title="Projets — Wisdom MUONAKA"
-  description="Projets DevOps de Wisdom MUONAKA : DataPulse, react-devops-aws, fastapi-devops-aws"
+  description="Projets DevOps de Wisdom MUONAKA : MiniDoc, CloudMart, DataPulse, StatusHub"
 >
   <div class="max-w-5xl mx-auto px-6 py-20">
 

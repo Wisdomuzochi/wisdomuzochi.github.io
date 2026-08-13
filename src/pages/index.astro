@@ -18,25 +18,18 @@ const skills = [
 
 const projects = [
   {
+    title: "MiniDoc",
+    subtitle: "Application de Gestion Électronique de Documents (GED)",
+    desc: "GED complète permettant d'uploader, classer et suivre le cycle de vie de documents (Brouillon → Validé → Archivé). API REST ASP.NET Core / EF Core 8 + interface Angular, CI/CD via GitHub Actions.",
+    stack: ["C#", ".NET 8", "Angular", "TypeScript", "EF Core", "GitHub Actions"],
+    href: "https://github.com/Wisdomuzochi/minidoc",
+  },
+  {
     title: "DataPulse",
     subtitle: "Pipeline ETL, NLP & Infrastructure Cloud",
     desc: "Plateforme ETL avec API FastAPI, analyse de sentiment BERT/HuggingFace via Celery/Redis, infrastructure AWS provisionnée avec Terraform (19 ressources), CI/CD avec scan sécurité Trivy et monitoring Prometheus/Grafana.",
     stack: ["FastAPI", "Celery", "Docker", "Terraform", "AWS", "Prometheus"],
     href: "https://github.com/Wisdomuzochi/datapulse",
-  },
-  {
-    title: "react-devops-aws",
-    subtitle: "Déploiement Serverless React",
-    desc: "SPA React déployée sur AWS S3 + CloudFront CDN (HTTPS). Pipeline GitHub Actions avec invalidation cache automatique à chaque push sur main.",
-    stack: ["React", "AWS S3", "CloudFront", "GitHub Actions"],
-    href: "https://github.com/Wisdomuzochi/react-devops-aws",
-  },
-  {
-    title: "fastapi-devops-aws",
-    subtitle: "API REST & Pipeline CI/CD",
-    desc: "API FastAPI conteneurisée Docker, livrée sur AWS ECR via GitHub Actions. IAM least-privilege et traçabilité image↔commit via SHA Git.",
-    stack: ["FastAPI", "Docker", "AWS ECR", "GitHub Actions"],
-    href: "https://github.com/Wisdomuzochi/fastapi-devops-aws",
   },
 ];
 
