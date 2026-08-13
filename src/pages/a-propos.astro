@@ -28,6 +28,39 @@ import Layout from "../layouts/Layout.astro";
     <section class="mb-16">
       <h2 class="section-heading">Expérience professionnelle</h2>
 
+      <div class="card card-blue mb-4">
+        <div class="flex flex-wrap items-start justify-between gap-4 mb-5">
+          <div>
+            <h3 class="font-bold text-white text-lg">Développeur .NET — Alternance</h3>
+            <p class="text-sky-400 text-sm font-medium mt-1">MAF (Mutuelle des Architectes Français), Paris</p>
+          </div>
+          <span class="mono text-xs text-gray-500 bg-white/5 px-3 py-1.5 rounded-full whitespace-nowrap">
+            Septembre 2026 – présent
+          </span>
+        </div>
+
+        <ul class="space-y-2.5 mb-5">
+          {[
+            "Maintenance et évolution de l'application DOC — système de GED gérant les flux de documents entrants et sortants.",
+            "Conception et développement de nouvelles fonctionnalités (ASP.NET MVC, Angular, API).",
+            "Rédaction de la documentation technique.",
+            "Participation au chiffrage et à l'analyse des tâches de développement.",
+            "Amélioration continue en méthode Agile/Kanban avec culture craft (TDD, revues de code, clean code).",
+          ].map(item => (
+            <li class="flex gap-3 text-sm text-gray-400 leading-relaxed">
+              <span class="text-sky-400 mt-1 shrink-0 text-xs">▸</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+
+        <div class="flex flex-wrap gap-1.5">
+          {["C#", ".NET Core", "ASP.NET MVC", "Entity Framework", "Angular", "TypeScript", "SQL Server", "Azure DevOps", "SonarQube", "Visual Studio", "Git"].map(t => (
+            <span class="tech-tag">{t}</span>
+          ))}
+        </div>
+      </div>
+
       <div class="card card-blue">
         <div class="flex flex-wrap items-start justify-between gap-4 mb-5">
           <div>
@@ -71,7 +104,7 @@ import Layout from "../layouts/Layout.astro";
         <div class="card card-indigo">
           <div class="flex flex-wrap items-start justify-between gap-4 mb-3">
             <div>
-              <h3 class="font-bold text-white">Cycle Ingénieur Informatique — Bac+4</h3>
+              <h3 class="font-bold text-white">Cycle Ingénieur Informatique — Bac+4 (en cours)</h3>
               <p class="text-indigo-400 text-sm font-medium mt-1">ISTY Paris-Saclay</p>
             </div>
             <span class="mono text-xs text-gray-500 bg-white/5 px-3 py-1.5 rounded-full whitespace-nowrap">
